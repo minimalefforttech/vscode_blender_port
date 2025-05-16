@@ -1,0 +1,99 @@
+{
+  "name": "blendercode",
+  "displayName": "BlenderCode",
+  "description": "An extension to send code to Blender.",
+  "version": "1.0.0",
+  "publisher": "minimalefforttech",
+  "author": {
+    "name": "Alex Telford"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/minimalefforttech/vscode_blender_port",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minimalefforttech/vscode_blender_port"
+  },
+  "bugs": {
+    "url": "https://github.com/minimalefforttech/vscode_blender_port/issues"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.20.0"
+  },
+  "keywords": [
+    "blender",
+    "python"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.55",
+    "@types/vscode": "^1.20.0",
+    "tslint": "^5.19.0",
+    "typescript": "^5.8.3",
+    "vscode-test": "^1.3.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "blendercode.sendPythonToBlender",
+        "title": "Send Python Code to Blender",
+        "category": "Blender"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "BlenderCode",
+      "properties": {
+        "blendercode.hostname": {
+          "type": "string",
+          "default": "localhost",
+          "description": "The hostname of the machine running Blender"
+        },
+        "blendercode.port": {
+          "type": "integer",
+          "default": 8080,
+          "description": "The port over which to send Python commands to Blender"
+        },
+        "blendercode.telemetry": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "blendercode.sendPythonToBlender",
+        "key": "alt+shift+b",
+        "mac": "ctrl+shift+b",
+        "when": "editorTextFocus && editorLangId == 'python'"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "blendercode.sendPythonToBlender",
+          "when": "editorTextFocus && editorLangId == 'python'",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "blendercode.sendPythonToBlender",
+          "group": "blendercode"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "@vscode/extension-telemetry": "^1.0.0"
+  }
+}
