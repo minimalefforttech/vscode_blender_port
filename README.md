@@ -1,6 +1,11 @@
 # VSCode send to blender addon
 This is a simple extension for sending code from vscode to Blender.\
-It requires both an extension loaded into VSCode and an addon installed into Blender, both are included.
+It requires both an extension loaded into VSCode and an addon installed into Blender, both are included.\
+Once installed, it can be enabled from the file menu.
+
+This started as a derivitive of [vscode-maya](https://github.com/artbycrunk/vscode-maya/) but morphed into the current implementation.
+
+![](vscode_extension/blender_vscode.gif)
 
 # Installation
 
@@ -40,5 +45,5 @@ To build the VSCode extension, follow these steps:
 1. Navigate to the `vscode_extension` directory.
 2. Run `npm install` to install the necessary dependencies.
 3. Run `vsce package` to compile the extension.
-4. Install with `code --install-extension blendercode-{version}.vsix`  
+4. Install with `code --install-extension sendtoblender-{version}.vsix`  
    Or navigate to it via the extension browser.

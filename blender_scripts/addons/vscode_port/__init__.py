@@ -1,10 +1,11 @@
+# Copyright (c) 2025 Alex Telford. All rights reserved.
 import bpy
 import logging
 from .operator import VSCodePortOperator
 from .server import VSCodePortServer
 
 bl_info = {
-    "name": "VSCode PORT",
+    "name": "VSCode Port",
     "author": "Alex Telford",
     "version": (1, 0, 0),
     "blender": (4, 0, 0),

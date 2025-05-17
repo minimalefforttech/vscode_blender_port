@@ -1,3 +1,4 @@
+# Copyright (c) 2025 Alex Telford. All rights reserved.
 import socket
 import logging
 import time
@@ -103,3 +104,17 @@ class VSCodePortServer:
             LOG.error(f"[VSCodePort] Error reading from client: {e}")
             self._cleanup_client_connection()
             return None, ReadState.ERROR
+
+    def send_output(self, output):
+        """
+        Send output string back to the client using the same length-prefixed protocol.
+        """
+        if not self._client_socket:
+            return
+        try:
+            data = output.encode("utf-8")
+            length_header = str(len(data)).zfill(8).encode("utf-8")
+            self._client_socket.sendall(length_header + data)
+            LOG.debug(f"[VSCodePort] Output sent to client ({len(data)} bytes)")
+        except Exception as e:
+            LOG.error(f"[VSCodePort] Error sending output to client: {e}")

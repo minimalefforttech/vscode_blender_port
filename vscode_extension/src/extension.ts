@@ -1,4 +1,5 @@
 'use strict';
+// Copyright (c) 2025 Alex Telford. All rights reserved.
 // This code is derived from https://github.com/artbycrunk/vscode-maya/blob/master/src/extension.ts
 import * as vscode from 'vscode';
 import { Socket } from 'net';
