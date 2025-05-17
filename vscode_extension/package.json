@@ -1,6 +1,6 @@
 {
-  "name": "blendercode",
-  "displayName": "BlenderCode",
+  "name": "sendtoblender",
+  "displayName": "Send to Blender",
   "description": "An extension to send code to Blender.",
   "version": "1.0.0",
   "publisher": "minimalefforttech",
@@ -44,53 +44,52 @@
   "contributes": {
     "commands": [
       {
-        "command": "blendercode.sendPythonToBlender",
+        "command": "sendtoblender.sendPythonToBlender",
         "title": "Send Python Code to Blender",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.printSelectedInBlender",
+        "title": "Print the selected variable in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.prettyPrintSelectedInBlender",
+        "title": "Pretty print the selected variable in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.describeSelectedInBlender",
+        "title": "Describe the selected variable (with signatures) in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.printHelpInBlender",
+        "title": "Show help for the selected variable in Output console",
         "category": "Blender"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "BlenderCode",
+      "title": "Send to Blender",
       "properties": {
-        "blendercode.hostname": {
+        "sendtoblender.hostname": {
           "type": "string",
           "default": "localhost",
           "description": "The hostname of the machine running Blender"
         },
-        "blendercode.port": {
+        "sendtoblender.port": {
           "type": "integer",
           "default": 8080,
           "description": "The port over which to send Python commands to Blender"
         },
-        "blendercode.telemetry": {
+        "sendtoblender.telemetry": {
           "type": "boolean",
           "default": true
         }
       }
     },
-    "keybindings": [
-      {
-        "command": "blendercode.sendPythonToBlender",
-        "key": "alt+shift+b",
-        "mac": "ctrl+shift+b",
-        "when": "editorTextFocus && editorLangId == 'python'"
-      }
-    ],
     "menus": {
-      "editor/context": [
-        {
-          "command": "blendercode.sendPythonToBlender",
-          "when": "editorTextFocus && editorLangId == 'python'",
-          "group": "navigation"
-        }
-      ],
-      "explorer/context": [
-        {
-          "command": "blendercode.sendPythonToBlender",
-          "group": "blendercode"
-        }
-      ]
     }
   },
   "dependencies": {
