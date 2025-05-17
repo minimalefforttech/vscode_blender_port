@@ -1,0 +1,98 @@
+{
+  "name": "sendtoblender",
+  "displayName": "Send to Blender",
+  "description": "An extension to send code to Blender.",
+  "version": "1.0.0",
+  "publisher": "minimalefforttech",
+  "author": {
+    "name": "Alex Telford"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/minimalefforttech/vscode_blender_port",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minimalefforttech/vscode_blender_port"
+  },
+  "bugs": {
+    "url": "https://github.com/minimalefforttech/vscode_blender_port/issues"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.20.0"
+  },
+  "keywords": [
+    "blender",
+    "python"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.55",
+    "@types/vscode": "^1.20.0",
+    "tslint": "^5.19.0",
+    "typescript": "^5.8.3",
+    "vscode-test": "^1.3.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "sendtoblender.sendPythonToBlender",
+        "title": "Send Python Code to Blender",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.printSelectedInBlender",
+        "title": "Print the selected variable in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.prettyPrintSelectedInBlender",
+        "title": "Pretty print the selected variable in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.describeSelectedInBlender",
+        "title": "Describe the selected variable (with signatures) in Output console",
+        "category": "Blender"
+      },
+      {
+        "command": "sendtoblender.printHelpInBlender",
+        "title": "Show help for the selected variable in Output console",
+        "category": "Blender"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Send to Blender",
+      "properties": {
+        "sendtoblender.hostname": {
+          "type": "string",
+          "default": "localhost",
+          "description": "The hostname of the machine running Blender"
+        },
+        "sendtoblender.port": {
+          "type": "integer",
+          "default": 8080,
+          "description": "The port over which to send Python commands to Blender"
+        },
+        "sendtoblender.telemetry": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "menus": {
+    }
+  },
+  "dependencies": {
+    "@vscode/extension-telemetry": "^1.0.0"
+  }
+}
